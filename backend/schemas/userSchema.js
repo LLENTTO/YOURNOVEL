@@ -14,7 +14,7 @@ const User = new mongoose.Schema({
     },
     avatar: {
         type: String
-    }
+    },
 })
 
 const userSchema = mongoose.model('userSchema', User)

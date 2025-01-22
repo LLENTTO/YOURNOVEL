@@ -21,4 +21,13 @@ authRouter.get("/logout", (req, res) => {
     })
 })
 
+authRouter.get("/check", (req, res) => {
+    try {
+        res.status(200).json(req.user)
+    } catch (error) {
+        console.log("Error in checkAuth", error)
+        res.status(500).json({message: "Failed checking auth"})
+    }
+})
+
 export default authRouter;

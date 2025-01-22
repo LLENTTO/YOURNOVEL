@@ -7,7 +7,7 @@ import passport from "passport"
 import MongoStore from "connect-mongo"
 import "./config/passport.js"
 import authRouter from "./routes/authRoutes.js"
-
+import cors from "cors"
 dotenv.config()
 
 const app = express()
@@ -24,12 +24,18 @@ app.use(session({
     cookie: {maxAge: 1000 * 60 *60 * 24} //1 day
 }))
 
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
+
+
 app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/auth', authRouter)
 
-app.use("/", router)
+app.use("/api", router)
 
 app.get("/dashboard", (req, res) => {
   if (!req.isAuthenticated()) {
