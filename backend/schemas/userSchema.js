@@ -15,7 +15,15 @@ const User = new mongoose.Schema({
     avatar: {
         type: String
     },
-})
+    bookmarks: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Post"
+        }
+    ],
+},
+    {timestamps: true}
+)
 
 const userSchema = mongoose.model('userSchema', User)
 

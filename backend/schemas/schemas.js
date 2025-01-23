@@ -14,6 +14,10 @@ const NovelSchema = mongoose.Schema({
     text: {
         type: String,
         required: true
+    },
+    likeCount: {
+        type: Number,
+        default: 0,
     }
 })
 
